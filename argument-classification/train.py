@@ -78,9 +78,9 @@ class UKPProcessor(object):
                 line = lines[idx]
                 splits = line.strip().split('\t')
                 topic = splits[0]
-                text = splits[4]
-                label = self._convert_label(splits[5].strip())
-                data_split_set = splits[6] #train/dev/test value
+                text = splits[2]
+                label = self._convert_label(splits[3].strip())
+                data_split_set = splits[4] #train/dev/test value
 
                 sentences.append([text, label, topic, data_split_set])
 
@@ -97,7 +97,7 @@ class UKPProcessor(object):
         if self.binarize_labels:
             return ["NoArgument", "Argument"]
         else:
-            return ["NoArgument", "Argument_against", "Argument_for"]
+            return ["Argument_against", "Argument_for"]
 
     def _convert_label(self, label):
         if self.binarize_labels and label != 'NoArgument':
