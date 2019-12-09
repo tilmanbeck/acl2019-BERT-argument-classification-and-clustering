@@ -118,11 +118,7 @@ class UKPProcessor(object):
                 if data_split_set != set_type: #Train only on train_split, evaluate only on test set
                     continue
 
-                if set_type == 'test' and topic == test_topic:
-                    examples.append(self._get_input_example(guid, topic, sentence, label))
-
-                if set_type == 'train' and topic != test_topic:
-                    examples.append(self._get_input_example(guid, topic, sentence, label))
+                examples.append(self._get_input_example(guid, topic, sentence, label))
 
         return examples
 
